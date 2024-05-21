@@ -13,8 +13,13 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="342dp"
-            android:layout_height="40dp"
-            android:text="Welcome to your pdf reader" />
+            android:layout_height="69dp"
+            android:keepScreenOn="false"
+            android:paddingLeft="150px"
+            android:paddingTop="50px"
+            android:scaleX="1.3"
+            android:scaleY="1.3"
+            android:text="List of files" />
 
         <ListView
             android:id="@+id/pdfListView"

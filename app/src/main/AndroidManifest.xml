@@ -30,6 +30,11 @@
             android:label="New Page">
         </activity>
 
+        <activity
+            android:name=".Select_File"
+            android:label="Select file">
+        </activity>
+
     </application>
 
 </manifest>
