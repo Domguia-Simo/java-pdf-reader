@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="190px"
+            android:paddingTop="20px"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:text="More info about the file" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="290dp"
+            android:layout_height="66dp"
+            android:paddingLeft="150px"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/open"
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:text="Open the file" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

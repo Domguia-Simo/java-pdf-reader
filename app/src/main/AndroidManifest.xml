@@ -35,6 +35,11 @@
             android:label="Select file">
         </activity>
 
+        <activity
+            android:name=".TestActivity"
+            android:label="more info">
+        </activity>
+
     </application>
 
 </manifest>

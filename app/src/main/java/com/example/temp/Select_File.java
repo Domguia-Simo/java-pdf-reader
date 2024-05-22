@@ -43,14 +43,19 @@ public class Select_File extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String filePath = (String) parent.getItemAtPosition(position);
-                openFile(filePath);
+                Intent intent = new Intent(Select_File.this ,TestActivity.class);
+                intent.putExtra("path",filePath);
+                startActivity(intent);
+//                openFile(filePath);
             }
         });
     }
 
     private void loadFiles() {
         ArrayList<String> fileList = new ArrayList<>();
-        File directory = Environment.getExternalStorageDirectory();
+//        Environment.getExternalStorageDirectory()
+
+        File directory = Environment.getRootDirectory();
         searchFiles(directory, fileList);
 
         if (fileList.isEmpty()) {
@@ -64,6 +69,11 @@ public class Select_File extends AppCompatActivity {
     private void searchFiles(File directory, ArrayList<String> fileList) {
         List<String> imageExtensions = Arrays.asList("jpg", "jpeg", "png", "gif", "bmp", "webp", "tiff", "ico");
         List<String> videoExtensions = Arrays.asList("mp4", "avi", "mkv", "mov", "wmv", "flv", "webm", "vob", "ogg");
+        List<String> musicExtensions = Arrays.asList("mp3" ,"opus" ,"aac");
+        List<String> systemExtensions = Arrays.asList("apk" ,"vdex" ,"odex" ,"prop" ,"so" ,"rc" ,"xml" ,"cil" ,"wav" ,"o" ,"conf" ,"bprof" ,"gz" ,"json" ,"0");
+        List<String> pdfExtensions = Arrays.asList( "pdf" ,"txt" ,"docx" ,"xml");
+
+            String name;
 
         File[] files = directory.listFiles();
         if (files != null) {
@@ -73,10 +83,18 @@ public class Select_File extends AppCompatActivity {
                 } else {
                     String fileName = file.getName().toLowerCase();
                     String fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1);
-
-                    if (!imageExtensions.contains(fileExtension) && !videoExtensions.contains(fileExtension)) {
-                        fileList.add(file.getAbsolutePath());
+                        name = file.getName();
+//                    file.getAbsolutePath()
+                    if (!imageExtensions.contains(fileExtension) &&
+                            !videoExtensions.contains(fileExtension) &&
+                            !musicExtensions.contains(fileExtension) &&
+                            !systemExtensions.contains(fileExtension)
+                    ) {
+                        fileList.add(name);
                     }
+//                    if (pdfExtensions.contains(pdfExtensions)) {
+//                        fileList.add(name);
+//                    }
                 }
             }
         }
