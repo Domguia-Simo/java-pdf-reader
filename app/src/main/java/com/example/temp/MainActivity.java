@@ -24,6 +24,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 1 ;
     private ImageView img;
     private Button search ,exit;
 
@@ -38,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this ,Select_File.class);
-                startActivity((intent));
+                if (checkPermission()) {
+//                    loadFiles();
+                    startActivity((intent));
+
+                } else {
+                    requestPermission();
+                }
             }
         });
 
@@ -51,4 +58,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private boolean checkPermission(){
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        return result == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission(){
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Toast.makeText(this, "External Storage permission is needed. Please allow in App Settings for additional functionality.", Toast.LENGTH_LONG).show();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+
+
 }
