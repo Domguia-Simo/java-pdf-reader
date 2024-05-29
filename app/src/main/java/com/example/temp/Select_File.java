@@ -52,6 +52,8 @@ public class Select_File extends AppCompatActivity {
         ArrayList<String> fileList = new ArrayList<>();
 
         File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+//        File directory = Environment.getRootDirectory();
+
         searchFiles(directory, fileList);
 
         if (fileList.isEmpty()) {
@@ -70,9 +72,9 @@ public class Select_File extends AppCompatActivity {
                     searchFiles(file, fileList);
                 } else {
                     String fileName = file.getName().toLowerCase();
-                    if (fileName.endsWith(".pdf")) {
+//                    if (fileName.endsWith(".pdf")) {
                         fileList.add(file.getName());
-                    }
+//                    }
                 }
             }
         }
